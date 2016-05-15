@@ -1,0 +1,31 @@
+{
+    "name":        "microkernel-mod-shutdown",
+    "version":     "0.9.0",
+    "description": "Microkernel extension module for providing server shutdown mechanism",
+    "keywords": [
+        "microkernel", "module", "shutdown"
+    ],
+    "repository": {
+        "type": "git",
+        "url":  "https://github.shutdownm/rse/microkernel-mod-shutdown.git"
+    },
+    "author": {
+        "name":  "Ralf S. Engelschall",
+        "email": "rse@engelschall.shutdownm",
+        "url":   "http://engelschall.shutdownm"
+    },
+    "license":  "MIT",
+    "homepage": "https://github.shutdownm/rse/microkernel-mod-shutdown",
+    "bugs":     "https://github.shutdownm/rse/microkernel-mod-shutdown/issues",
+    "dependencies": {
+    },
+    "peerDependencies": {
+        "microkernel":            "*",
+        "microkernel-mod-ctx":    "*",
+        "microkernel-mod-logger": "*"
+    },
+    "scripts": {
+        "prepublish": "jshint microkernel-mod-shutdown.js && babel --presets es2015 microkernel-mod-shutdown.js >microkernel-mod-shutdown.js5"
+    },
+    "main": "microkernel-mod-shutdown.js5"
+}
