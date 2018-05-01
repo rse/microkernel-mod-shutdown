@@ -35,6 +35,9 @@
         "microkernel-mod-ctx":      "*",
         "microkernel-mod-logger":   "*"
     },
+    "engines": {
+        "node":                     ">=8.0.0"
+    },
     "scripts": {
         "prepublishOnly": "eslint --config eslint.yaml microkernel-mod-shutdown.js"
     },
