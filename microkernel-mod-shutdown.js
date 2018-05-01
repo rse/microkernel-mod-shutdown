@@ -22,7 +22,8 @@
 **  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-export default class Module {
+/*  the Microkernel module  */
+class Module {
     get module () {
         return {
             name:  "microkernel-mod-shutdown",
@@ -37,8 +38,8 @@ export default class Module {
             kernel.state("dead").then(() => {
                 /*  perform final callback  */
                 kernel.sv("log", "shutdown", "info", `shutdown process (reason: ${reason})`)
-                kernel.sv("log", "shutdown", "info", `#### TERMINATING PROCESS ####`)
-                cb.call(null, reason)
+                kernel.sv("log", "shutdown", "info", "#### TERMINATING PROCESS ####")
+                cb(reason)
             }, (err) => {
                 kernel.sv("log", "shutdown", "error", `shutdown process FAILED: ${err} (${err.stack})`)
             })
@@ -46,13 +47,13 @@ export default class Module {
 
         /*  handle fatal application error  */
         kernel.register("fatal", (error) => {
-            kernel.sv("log", "shutdown", "error", "FATAL ERROR: " + error)
+            kernel.sv("log", "shutdown", "error", `FATAL ERROR: ${error}`)
             shutdown("FATAL", () => process.exit(1))
         })
 
         /*  standard termination  */
         kernel.register("shutdown", (info) => {
-            kernel.sv("log", "shutdown", "info", "terminating process: " + info)
+            kernel.sv("log", "shutdown", "info", `terminating process: ${info}`)
             shutdown("SHUTDOWN", () => process.exit(0))
         })
 
@@ -100,4 +101,7 @@ export default class Module {
         })
     }
 }
+
+/*  export the Microkernel module  */
+module.exports = Module
 
