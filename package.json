@@ -10,9 +10,9 @@
         "url":  "https://github.shutdownm/rse/microkernel-mod-shutdown.git"
     },
     "author": {
-        "name":  "Ralf S. Engelschall",
-        "email": "rse@engelschall.shutdownm",
-        "url":   "http://engelschall.shutdownm"
+        "name":  "Dr. Ralf S. Engelschall",
+        "email": "rse@engelschall.com",
+        "url":   "http://engelschall.com"
     },
     "license":  "MIT",
     "homepage": "https://github.shutdownm/rse/microkernel-mod-shutdown",
