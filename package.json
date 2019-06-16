@@ -1,6 +1,6 @@
 {
     "name":        "microkernel-mod-shutdown",
-    "version":     "0.9.9",
+    "version":     "0.9.10",
     "description": "Microkernel extension module for providing server shutdown mechanism",
     "keywords": [
         "microkernel", "module", "shutdown"
