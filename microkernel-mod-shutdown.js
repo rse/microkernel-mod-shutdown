@@ -34,7 +34,7 @@ class Module {
     }
     boot (kernel) {
         /*  perform application shutdown  */
-        let shutdown = (reason, cb) => {
+        const shutdown = (reason, cb) => {
             kernel.state("dead").then(() => {
                 /*  perform final callback  */
                 kernel.sv("log", "shutdown", "info", `shutdown process (reason: ${reason})`)
@@ -58,10 +58,10 @@ class Module {
         })
 
         /*  handle signals  */
-        let signals = [ "SIGUSR2", "SIGINT", "SIGTERM" ]
-        let seen = {}
+        const signals = [ "SIGUSR2", "SIGINT", "SIGTERM" ]
+        const seen = {}
         signals.forEach((signal) => {
-            let handler = () => {
+            const handler = () => {
                 /*  react only once
                     NOTICE: we cannot use process.once(), because we regularily
                     (for unknown reasons) become the same signal delivered twice during
@@ -74,7 +74,7 @@ class Module {
                     and re-delivering exactly the same signal once again (which is
                     important at least for nodemon, as it expects we get terminated by
                     exactly the signal SIGUSR2 he sent us)  */
-                let terminate = (sig, hand) => {
+                const terminate = (sig, hand) => {
                     process.removeListener(sig, hand)
                     process.kill(process.pid, sig)
                 }
